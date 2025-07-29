@@ -1,0 +1,59 @@
+# action.yml
+name: "GitHub Create Tag Release"
+description: "Create a GitHub release from a pushed Tag."
+branding:
+  icon: "zap"
+  color: "white"
+inputs:
+  # Version and release control inputs
+  version_regex:
+    description: "Regular expression to verify that the version is in a correct format. Defaults to .* (accept everything)."
+    default: "^.*$"
+    required: false
+  prerelease_regex:
+    description: "Any version matching this regular expression will be marked as pre-release. Disabled by default."
+    default: ""
+    required: false
+  create_draft:
+    description: "Create the releases as draft (true|false [default: false]). Existing will not be updated from released to draft."
+    default: "false"
+    required: false
+  update_existing:
+    description: "Controls whether an existing release should be updated with data from the latest push (true|false [default: false])."
+    default: "false"
+    required: false
+  created_tag:
+    description: "Allows to pass an already created tag, forces update_existing to true."
+    default: ""
+    required: false
+  release_title:
+    description: "Allows to pass a title for the release."
+    default: ""
+    required: false
+
+  # Inputs related to the Changelog parsing
+  changelog_file:
+    description: "Path of file that contains the Markdown formatted changelog."
+    default: "CHANGELOG.md"
+    required: false
+  changelog_heading:
+    description: "Heading level at which the tag headings exist."
+    default: "h2"
+    required: false
+  release_text:
+    description: "Text body that will be added to the release. This will disable change log parsing"
+    default: ""
+    required: false
+outputs:
+  id:
+    description: "The ID of the created Release"
+  html_url:
+    description: "The URL users can navigate to in order to view the release"
+  upload_url:
+    description: "The URL for uploading assets to the release"
+  changelog:
+    description: "Parsed content from the provided changelog file"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
