@@ -56,5 +56,5 @@ outputs:
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/step-security/github-create-release-action:v3.0.2@sha256:96b7cb1e4c16f836564a4eba519e33195f83917eb16fcab15d85c965e8ffe81d" #v3.0.2
+  image: "docker://ghcr.io/step-security/github-create-release-action:v3.0.3@sha256:5112c67dd6f7e268cda7bc9f52cf21b4d0ae56306ac67504631317ef52116d7a" #v3.0.3
 
